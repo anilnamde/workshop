@@ -25,10 +25,14 @@ export default class Board extends Component {
         return this.state.values[index] !== CONSTANTS.UNSET;
     }
 
+    showCurrentPlayer(){
+        return this.state.xIsNext ? CONSTANTS.CROSS : CONSTANTS.CIRLCLE
+    }
+
     handlerSquareClicked(index) {
         if (!this.isSquareSelected(index)) {
             const values = this.state.values.slice();
-            values[index] = this.state.xIsNext ? CONSTANTS.CROSS : CONSTANTS.CIRLCLE;
+            values[index] = this.showCurrentPlayer();
             this.setState({
                 xIsNext: !this.state.xIsNext,
                 values
@@ -48,6 +52,10 @@ export default class Board extends Component {
 
     render() {
         const list = this.getListToRender(this.state.values);
-        return <ul className="board">{list}</ul>;
+        return (
+            <div>
+                <h2>Next player is {this.showCurrentPlayer()}</h2>
+                <ul className="board">{list}</ul>
+            </div>);
     }
 }
