@@ -10,20 +10,22 @@ export default class Board extends Component{
 
     getInitialState() {
         return {
-            values: Array(9).fill().map((e, index)=> null)
+            values: Array(9).fill().map((e, index)=> '-')
         };
     }
 
+    getListToRender(values) {
+        return values.map((value, index)=>{
+            return <li key={index}>
+                <Square value={this.state.values[index]}
+                        onClick={() => console.log(value, index)}
+                />
+            </li>
+        });
+    }
+
     render(){
-        return <ul className="board">{
-            this.state.values.map((value, index)=>{
-                return <li key={index}>
-                    <Square value={this.state.values[index]}/>
-                </li>
-            })
-        }</ul>
+        const list = this.getListToRender(this.state.values);
+        return <ul className="board">{list}</ul>;
     }
 }
-
-
-
