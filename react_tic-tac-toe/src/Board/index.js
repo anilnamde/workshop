@@ -8,16 +8,61 @@ const CONSTANTS = {
     UNSET: '-'
 };
 
+class Logic {
+    constructor() {
+        const winCombinations = [
+            [1, 1, 1, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 1, 1, 1],
+
+            [1, 0, 0, 1, 0, 0, 1, 0, 0],
+            [0, 1, 0, 0, 1, 0, 0, 1, 0],
+            [0, 0, 1, 0, 0, 1, 0, 0, 1],
+
+            [1, 0, 0, 0, 1, 0, 0, 0, 1],
+            [0, 0, 1, 0, 1, 0, 1, 0, 0]
+        ];
+
+        this.winPossibilities = Logic.convertArrayOfBinaryArrayToNumber(winCombinations);
+    }
+
+    static convertArrayOfBinaryArrayToNumber(arrayOfbinaryArray) {
+        return arrayOfbinaryArray.map((winCombination)=> {
+            return Logic.convertBinaryArrayToNumber(winCombination);
+        });
+    }
+
+    static convertBoardToBinaryArray(values, player) {
+        return values.map((value)=> {
+            return value === player ? 1 : 0;
+        });
+    }
+
+    static convertBinaryArrayToNumber(binaryArray) {
+        return parseInt(binaryArray.join(''), 2);
+    }
+
+    isWin(array, player) {
+        const binaryArray = Logic.convertBoardToBinaryArray(array, player);
+        const number = Logic.convertBinaryArrayToNumber(binaryArray);
+        if (this.winPossibilities.indexOf(number) > 0)
+            return player;
+        return CONSTANTS.UNSET;
+    }
+}
+
 export default class Board extends Component {
     constructor() {
         super();
         this.state = this.getInitialState();
+        this.logic = new Logic();
     }
 
     getInitialState() {
         return {
             values: Array(9).fill().map((e, index)=> CONSTANTS.UNSET),
-            xIsNext: true
+            xIsNext: true,
+            winner: CONSTANTS.UNSET
         };
     }
 
@@ -25,7 +70,7 @@ export default class Board extends Component {
         return this.state.values[index] !== CONSTANTS.UNSET;
     }
 
-    showCurrentPlayer(){
+    showCurrentPlayer() {
         return this.state.xIsNext ? CONSTANTS.CROSS : CONSTANTS.CIRLCLE
     }
 
@@ -33,10 +78,17 @@ export default class Board extends Component {
         if (!this.isSquareSelected(index)) {
             const values = this.state.values.slice();
             values[index] = this.showCurrentPlayer();
-            this.setState({
-                xIsNext: !this.state.xIsNext,
-                values
+            const currentPlayer = this.showCurrentPlayer();
+
+            this.setState((prevState, prop) => {
+                this.calculateWin(values, currentPlayer)
+                return {
+                    xIsNext: !this.state.xIsNext,
+                    values
+                };
             });
+
+
         }
     }
 
@@ -50,11 +102,31 @@ export default class Board extends Component {
         });
     }
 
+    calculateWin(values, player) {
+        var winner = this.logic.isWin(values, player);
+        if (winner !== CONSTANTS.UNSET) {
+            this.setState((prevState, prop) => {
+                const newState = prevState.splice();
+                return {
+                    newState,
+                    winner: player
+                };
+            });
+        }
+    }
+
+    getMessage(){
+        if(this.state.winner !== CONSTANTS.UNSET){
+            return <h2>Next player is {this.showCurrentPlayer()}</h2>
+        }
+        return <h2>Winner is {this.showCurrentPlayer()} Hurrah!!! </h2>
+    }
+
     render() {
         const list = this.getListToRender(this.state.values);
         return (
             <div>
-                <h2>Next player is {this.showCurrentPlayer()}</h2>
+                {this.getMessage()}
                 <ul className="board">{list}</ul>
             </div>);
     }
