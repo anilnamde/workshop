@@ -14,11 +14,18 @@ export default class Board extends Component{
         };
     }
 
+    handlerSquareClicked(index){
+        console.log(index)
+        var values = this.state.values.slice();
+        values[index] = 'X';
+        this.setState({values});
+    }
+
     getListToRender(values) {
         return values.map((value, index)=>{
             return <li key={index}>
                 <Square value={this.state.values[index]}
-                        onClick={() => console.log(value, index)}
+                        onClick={() => this.handlerSquareClicked(index)}
                 />
             </li>
         });

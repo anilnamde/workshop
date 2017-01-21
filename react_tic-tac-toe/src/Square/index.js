@@ -8,7 +8,7 @@ export default class Square extends Component {
             <button className="square"
                     type="button"
                     value={this.props.value}
-                    onClick={this.props.onClick}
+                    onClick={()=> this.props.onClick()}
             >
                 {this.props.value}
             </button>
