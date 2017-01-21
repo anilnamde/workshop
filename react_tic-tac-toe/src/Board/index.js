@@ -5,7 +5,11 @@ import './style.css';
 export default class Board extends Component{
     constructor(){
         super();
-        this.state = {
+        this.state = this.getInitialState();
+    }
+
+    getInitialState() {
+        return {
             values: Array(9).fill().map((e, index)=> null)
         };
     }
