@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Square from '../Square/index';
-import Message from '../Message/Message';
+import Message from '../Message/index';
+import Moves from '../Moves/index';
 
 import {Logic} from './Logic';
 import {CONSTANTS} from './Constants';
@@ -92,17 +93,7 @@ export default class Board extends Component {
                 <input type="button" value="reset" onClick={()=> {
                     this.reset()
                 }}/>
-                {
-                    <ul>
-                        {
-                            this.state.moves.map((item, i)=> {
-                                return <li key={i}>
-                                    {i}, {item}
-                                </li>
-                            })
-                        }
-                    </ul>
-                }
+                <Moves moves={this.state.moves}/>
             </div>);
     }
 }
