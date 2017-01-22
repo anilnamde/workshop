@@ -24,6 +24,7 @@ export default class Board extends Component {
             values: Array(9).fill().map((e, index)=> CONSTANTS.UNSET),
             xIsNext: true,
             winner: false,
+            draw: false,
             moves: []
         };
     }
@@ -37,47 +38,36 @@ export default class Board extends Component {
     }
 
     handlerSquareClicked(index) {
-        if (!this.isSquareSelected(index)) {
-
-
-
-            // we need to change
-            // 1 moves to clean it
-            // 2 xIsNext
-            // 3 tic tac array
-            // 4 update state for next player
+        if (!this.state.draw &&
+            !this.state.winner &&
+            !this.isSquareSelected(index)) {
+            // we need to change things here
 
             const values = this.state.values.slice();
             const moves = this.state.moves.slice();
 
-            // uppdate array
+            // update array
             values[index] = this.getCurrentPlayer();
 
-            //1. update moves from old data
+            // update moves from old data
             moves.push(`${values[index]} on ${index}`);
+
+            // check winner now
+            const winner = this.logic.hasWin(values, index);
+
+            //check for draw
+            // const draw = this.logic.hasDraw(values);
 
             this.setState(() => {
                 return {
-                    xIsNext: !this.state.xIsNext,
+                    xIsNext: winner ? this.state.xIsNext : !this.state.xIsNext,
                     values,
-                    moves
+                    moves,
+                    draw: false,
+                    winner
                 };
             });
-
-            // calculate the winner her and then
-            if(this.isWinner(values, index)){
-                console.log('And the winner is  .... :) ', this.getCurrentPlayer());
-                return;
-            }
         }
-    }
-
-    isWinner(values, index) {
-        console.log('isWinner ',values, index)
-        const currentPlayer = values[index];
-        var numberIs = this.logic.convertBoardToNumber(values, currentPlayer);
-        numberIs = this.logic.convertBinaryArrayToNumber(numberIs);
-        return this.logic.hasWin(numberIs);
     }
 
     getListToRender(values) {
@@ -94,7 +84,6 @@ export default class Board extends Component {
         const list = this.getListToRender(this.state.values);
         return (
             <div>
-
                 <Message winner={this.state.winner}
                          player={this.getCurrentPlayer()}
                 />
