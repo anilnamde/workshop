@@ -15,11 +15,16 @@ export default class Board extends Component {
         this.logic = new Logic();
     }
 
+    reset() {
+        this.setState(this.getInitialState());
+    }
+
     getInitialState() {
         return {
             values: Array(9).fill().map((e, index)=> CONSTANTS.UNSET),
             xIsNext: true,
-            winner: false
+            winner: false,
+            moves: []
         };
     }
 
@@ -33,12 +38,16 @@ export default class Board extends Component {
 
     handlerSquareClicked(index) {
         if (!this.isSquareSelected(index)) {
+
             const values = this.state.values.slice();
             values[index] = this.getCurrentPlayer();
-            const currentPlayer = this.getCurrentPlayer();
+
+            const currentPlayer = this.getCurrentPlayer(),
+                currentValues = values;
+
+
 
             this.setState((prevState, prop) => {
-                this.calculateWin(values, currentPlayer)
                 return {
                     xIsNext: !this.state.xIsNext,
                     values
@@ -58,45 +67,31 @@ export default class Board extends Component {
             </li>
         });
     }
-
-    calculateWin(values, player) {
-        // var winner = this.logic.isWin(values, player);
-        // if (winner !== CONSTANTS.UNSET) {
-        //     this.setState((prevState, prop) => {
-        //         const newState = prevState.splice();
-        //         return {
-        //             newState,
-        //             winner: player
-        //         };
-        //     });
-        // }
-    }
-
-
-    // isWin(array, player) {
-    //     const binaryArray = Logic.convertBoardToBinaryArray(array, player);
-    //     const number = Logic.convertBinaryArrayToNumber(binaryArray);
-    //     if (this.winPossibilities.indexOf(number) > 0)
-    //         return player;
-    //     return CONSTANTS.UNSET;
-    // }
-    //
-
-    // convertBoardToBinaryArray(values, player) {
-    //     return values.map((value)=> {
-    //         return value === player ? 1 : 0;
-    //     });
-    // }
-
+    
     render() {
         const list = this.getListToRender(this.state.values);
         return (
             <div>
+
                 <Message winner={this.state.winner}
                          player={this.getCurrentPlayer()}
                 />
 
                 <ul className="board">{list}</ul>
+                <input type="button" value="reset" onClick={()=> {
+                    this.reset()
+                }}/>
+                {
+                    <ul>
+                        {
+                            this.state.moves.map((item)=> {
+                                return <li>
+                                    item
+                                </li>
+                            })
+                        }
+                    </ul>
+                }
             </div>);
     }
 }
