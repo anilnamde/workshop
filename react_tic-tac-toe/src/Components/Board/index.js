@@ -39,23 +39,45 @@ export default class Board extends Component {
     handlerSquareClicked(index) {
         if (!this.isSquareSelected(index)) {
 
+
+
+            // we need to change
+            // 1 moves to clean it
+            // 2 xIsNext
+            // 3 tic tac array
+            // 4 update state for next player
+
             const values = this.state.values.slice();
+            const moves = this.state.moves.slice();
+
+            // uppdate array
             values[index] = this.getCurrentPlayer();
 
-            const currentPlayer = this.getCurrentPlayer(),
-                currentValues = values;
+            //1. update moves from old data
+            moves.push(`${values[index]} on ${index}`);
 
-
-
-            this.setState((prevState, prop) => {
+            this.setState(() => {
                 return {
                     xIsNext: !this.state.xIsNext,
-                    values
+                    values,
+                    moves
                 };
             });
 
-
+            // calculate the winner her and then
+            if(this.isWinner(values, index)){
+                console.log('And the winner is  .... :) ', this.getCurrentPlayer());
+                return;
+            }
         }
+    }
+
+    isWinner(values, index) {
+        console.log('isWinner ',values, index)
+        const currentPlayer = values[index];
+        var numberIs = this.logic.convertBoardToNumber(values, currentPlayer);
+        numberIs = this.logic.convertBinaryArrayToNumber(numberIs);
+        return this.logic.hasWin(numberIs);
     }
 
     getListToRender(values) {
@@ -67,7 +89,7 @@ export default class Board extends Component {
             </li>
         });
     }
-    
+
     render() {
         const list = this.getListToRender(this.state.values);
         return (
@@ -84,9 +106,9 @@ export default class Board extends Component {
                 {
                     <ul>
                         {
-                            this.state.moves.map((item)=> {
-                                return <li>
-                                    item
+                            this.state.moves.map((item, i)=> {
+                                return <li key={i}>
+                                    {i}, {item}
                                 </li>
                             })
                         }
