@@ -39,9 +39,7 @@ export default class Board extends Component {
     }
 
     handlerSquareClicked(index) {
-        if (!this.state.draw &&
-            !this.state.winner &&
-            !this.isSquareSelected(index)) {
+        if (!this.state.draw && !this.state.winner && !this.isSquareSelected(index)) {
             // we need to change things here
 
             const values = this.state.values.slice();
