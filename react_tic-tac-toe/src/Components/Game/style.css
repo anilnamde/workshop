@@ -1,4 +1,6 @@
 .game{
     margin:auto;
     width:305px;
+    overflow: auto;
+    padding-left:1px;
 }
