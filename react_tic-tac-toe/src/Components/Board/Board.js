@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Square from '../Square/index';
-import Message from '../Message/index';
-import Moves from '../Moves/index';
+import Square from '../Square/Square';
+import Message from '../Message/Message';
+import Moves from '../Moves/Moves';
 
 import {Logic} from './Logic';
 import {CONSTANTS} from './Constants';
 
 
-import './style.css';
+import './Board.css';
 
 export default class Board extends Component {
     constructor() {

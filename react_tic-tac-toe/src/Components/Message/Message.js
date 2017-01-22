@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css'
+import './Message.css'
 
 export default function Message(props) {
     if (!props.winner) {

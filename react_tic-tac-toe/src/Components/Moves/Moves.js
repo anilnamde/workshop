@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './Moves.css';
 
 export default function Moves(props) {
     return (<ul className="moves">
