@@ -55,14 +55,14 @@ export default class Board extends Component {
             const winner = this.logic.hasWin(values, index);
 
             //check for draw
-            // const draw = this.logic.hasDraw(values);
+            const draw = this.logic.hasDraw(values);
 
             this.setState(() => {
                 return {
                     xIsNext: winner ? this.state.xIsNext : !this.state.xIsNext,
                     values,
                     moves,
-                    draw: false,
+                    draw,
                     winner
                 };
             });
@@ -85,6 +85,7 @@ export default class Board extends Component {
             <div>
                 <Message winner={this.state.winner}
                          player={this.getCurrentPlayer()}
+                         draw={this.state.draw}
                 />
 
                 <ul className="board">{list}</ul>

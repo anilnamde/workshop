@@ -1,5 +1,5 @@
 // to contain the logic for gam win
-import {CONSANTS} from './Constants';
+import {CONSTANTS} from './Constants';
 
 const winCombinations = [
     [1, 1, 1, 0, 0, 0, 0, 0, 0],
@@ -46,8 +46,8 @@ class Logic {
     }
 
     hasDraw(values) {
-        return values.some((value) => {
-            return value === CONSANTS.UNSET;
+        return !values.some((value) => {
+            return value === CONSTANTS.UNSET;
         });
     }
 }
