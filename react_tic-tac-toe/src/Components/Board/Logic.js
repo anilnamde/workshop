@@ -74,7 +74,7 @@ class Logic {
         const currentPlayer = values[index];
         let numberIs = this.convertBoardToNumber(values, currentPlayer);
         numberIs = this.convertBinaryArrayToNumber(numberIs);
-        return this.winPossibilities.indexOf(numberIs) > 0;
+        return this.winPossibilities.indexOf(numberIs) >= 0;
     }
 
     hasDraw(values) {
