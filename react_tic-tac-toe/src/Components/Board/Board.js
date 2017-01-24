@@ -20,6 +20,14 @@ export default class Board extends Component {
         this.setState(this.getInitialState());
     }
 
+    undo() {
+
+    }
+
+    redo() {
+
+    }
+
     getInitialState() {
         return {
             values: Array(9).fill().map((e, index)=> CONSTANTS.UNSET),
@@ -45,11 +53,17 @@ export default class Board extends Component {
             const values = this.state.values.slice();
             const moves = this.state.moves.slice();
 
+            // update moves from old data
+            moves.push({
+                winner: this.state.winner,
+                draw: this.state.draw,
+                values: values,
+                xIsNext: this.state.xIsNext,
+                moves
+            });
+
             // update array
             values[index] = this.getCurrentPlayer();
-
-            // update moves from old data
-            moves.push(`${values[index]} on ${index}`);
 
             // check winner now
             const winner = this.logic.hasWin(values, index);
@@ -91,6 +105,12 @@ export default class Board extends Component {
                 <ul className="board">{list}</ul>
                 <input type="button" value="reset" onClick={()=> {
                     this.reset()
+                }}/>
+                <input type="button" value="undo" onClick={()=> {
+                    this.undo()
+                }}/>
+                <input type="button" value="redo" onClick={()=> {
+                    this.redo()
                 }}/>
                 <Moves moves={this.state.moves}/>
             </div>);
