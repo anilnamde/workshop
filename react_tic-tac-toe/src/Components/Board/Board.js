@@ -20,6 +20,7 @@ export default class Board extends Component {
         this.setState(this.getInitialState());
     }
 
+    // Need to rethink about the undo and redo
     undo() {
 
     }
