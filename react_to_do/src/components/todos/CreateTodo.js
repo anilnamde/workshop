@@ -4,6 +4,7 @@ export default class CreateTodo extends React.Component{
     constructor(props){
         super(props);
         this.props = props;
+
         this.state = {
             text: ''
         };
@@ -14,10 +15,21 @@ export default class CreateTodo extends React.Component{
 
     onTextChange({target}){
         console.log(target.value)
+        this.setState(() => {
+            return {
+                text: target.value
+            };
+        });
     }
 
     onAdd(){
         console.log(this.state)
+        this.props.addItem(this.state.text);
+        this.setState(()=>{
+            return {
+                text: ''
+            }
+        });
     }
 
     render(){
