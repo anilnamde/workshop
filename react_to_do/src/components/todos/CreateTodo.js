@@ -35,8 +35,10 @@ export default class CreateTodo extends React.Component{
     render(){
         return (<div>
             <input type="text"
+                   value={this.state.text}
                    placeholder="[Enter To Do]"
                    onChange={this.onTextChange}/>
+
             <input type="button"
                    value="Add"
                    onClick={this.onAdd}/>
