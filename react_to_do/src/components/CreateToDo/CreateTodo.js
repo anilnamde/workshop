@@ -1,4 +1,6 @@
 import * as React from 'react';
+import './CreateTodo';
+
 
 export default class CreateTodo extends React.Component{
     constructor(props){
