@@ -13,6 +13,16 @@ export default class Todos extends React.Component {
         };
 
         this.addItem = this.addItem.bind(this);
+        this.updateList = this.updateList.bind(this);
+    }
+
+    updateList(list) {
+        this.setState(()=> {
+            return {
+                items: list
+            }
+        });
+
     }
 
     addItem(description) {
@@ -21,7 +31,7 @@ export default class Todos extends React.Component {
             done: false
         }]);
 
-        this.setState((pre, prop)=> {
+        this.setState(()=> {
             return {
                 items: newItem
             }
@@ -33,7 +43,9 @@ export default class Todos extends React.Component {
             <div>
                 <CreateTodo addItem={this.addItem}/>
                 <div>Number of items: {this.state.items.length}</div>
-                <TodoList items={this.state.items}/>
+                <TodoList items={this.state.items}
+                          updateList={this.updateList}
+                />
             </div>);
     }
 }

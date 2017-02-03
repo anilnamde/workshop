@@ -13,8 +13,17 @@ export default class TodoList extends React.Component {
             {this.props.items.map((value, index)=>{
                 return <li key={index}>
                     {console.log('insider', value)}
-                    <span>{value.item}</span>
-                    <a href="javascript:void(0)">{value.done ? 'done' : 'progress'}</a>
+                    <span>{value.item} [{value.done ? 'done' : 'progress'}]</span>
+                    <a href="javascript:void(0)"
+                       onClick={()=>{
+                           var updatedList = [].concat(this.props.items);
+                           updatedList[index].done = true;
+
+                           this.props.updateList(updatedList)
+                       }}
+                    >
+                        {value.done ? '' : 'mark it done'}
+                    </a>
                 </li>
             })}
         </ul>)
