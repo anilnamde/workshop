@@ -1,6 +1,8 @@
 import * as React from 'react';
-import CreateTodo from './CreateTodo';
-import TodoList from './TodoList';
+import CreateTodo from '../CreateToDo/CreateTodo';
+import TodoList from '../TodoList/TodoList';
+
+import './ToDos.css';
 
 export default class Todos extends React.Component {
     constructor(props) {
@@ -30,6 +32,7 @@ export default class Todos extends React.Component {
         return (
             <div>
                 <CreateTodo addItem={this.addItem}/>
+                <div>Number of items: {this.state.items.length}</div>
                 <TodoList items={this.state.items}/>
             </div>);
     }

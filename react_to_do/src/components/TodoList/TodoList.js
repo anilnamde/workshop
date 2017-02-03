@@ -9,7 +9,6 @@ export default class TodoList extends React.Component {
     render() {
         console.log(this.props)
         return (<ul>
-            <li>Number of items: {this.props.items.length}</li>
             {this.props.items.map((value, index)=>{
                 return <li key={index}>
                     {console.log('insider', value)}

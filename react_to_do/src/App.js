@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
-import ToDos from './components/todos/ToDos';
+import ToDos from './components/ToDos/ToDos';
 import './App.css';
 
 class App extends Component {
