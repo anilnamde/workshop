@@ -1,0 +1,12 @@
+{
+  "name": "react_basics__yarn_webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "author": "Anil Namde",
+  "license": "MIT",
+  "devDependencies": {
+    "react": "^15.4.2",
+    "webpack": "^2.2.1"
+  }
+}
