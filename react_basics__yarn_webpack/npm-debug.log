@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/anilnamde/.nvm/versions/node/v7.4.0/bin/node',
+1 verbose cli   '/Users/anilnamde/.nvm/versions/node/v7.4.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'testh' ]
+2 info using npm@4.0.5
+3 info using node@v7.4.0
+4 verbose run-script [ 'pretesth', 'testh', 'posttesth' ]
+5 info lifecycle react_basics__yarn_webpack@1.0.0~pretesth: react_basics__yarn_webpack@1.0.0
+6 silly lifecycle react_basics__yarn_webpack@1.0.0~pretesth: no script for pretesth, continuing
+7 info lifecycle react_basics__yarn_webpack@1.0.0~testh: react_basics__yarn_webpack@1.0.0
+8 verbose lifecycle react_basics__yarn_webpack@1.0.0~testh: unsafe-perm in lifecycle true
+9 verbose lifecycle react_basics__yarn_webpack@1.0.0~testh: PATH: /Users/anilnamde/.nvm/versions/node/v7.4.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/anilnamde/Projects/My/workshop/react_basics__yarn_webpack/node_modules/.bin:/usr/local/bin:/Users/anilnamde/.jenv/shims:/Users/anilnamde/.jenv/bin:/bin:/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/Users/anilnamde/.nvm/versions/node/v7.4.0/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/Users/anilnamde/Library/Android/sdk/bin:/Users/anilnamde/Library/Android/sdk/tools:/Users/anilnamde/Library/Android/sdk/platform-tools:/Users/anilnamde/.rvm/bin:/Users/anilnamde/.rvm/bin:/Users/anilnamde/Projects/My/workshop/react_basics__yarn_webpack/node_modules/.bin
+10 verbose lifecycle react_basics__yarn_webpack@1.0.0~testh: CWD: /Users/anilnamde/Projects/My/workshop/react_basics__yarn_webpack
+11 silly lifecycle react_basics__yarn_webpack@1.0.0~testh: Args: [ '-c', 'mocha --compilers js:babel-core/register ' ]
+12 silly lifecycle react_basics__yarn_webpack@1.0.0~testh: Returned: code: 1  signal: null
+13 info lifecycle react_basics__yarn_webpack@1.0.0~testh: Failed to exec testh script
+14 verbose stack Error: react_basics__yarn_webpack@1.0.0 testh: `mocha --compilers js:babel-core/register `
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/anilnamde/.nvm/versions/node/v7.4.0/lib/node_modules/npm/lib/utils/lifecycle.js:279:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/anilnamde/.nvm/versions/node/v7.4.0/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:885:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid react_basics__yarn_webpack@1.0.0
+16 verbose cwd /Users/anilnamde/Projects/My/workshop/react_basics__yarn_webpack
+17 error Darwin 16.3.0
+18 error argv "/Users/anilnamde/.nvm/versions/node/v7.4.0/bin/node" "/Users/anilnamde/.nvm/versions/node/v7.4.0/bin/npm" "run" "testh"
+19 error node v7.4.0
+20 error npm  v4.0.5
+21 error code ELIFECYCLE
+22 error react_basics__yarn_webpack@1.0.0 testh: `mocha --compilers js:babel-core/register `
+22 error Exit status 1
+23 error Failed at the react_basics__yarn_webpack@1.0.0 testh script 'mocha --compilers js:babel-core/register '.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the react_basics__yarn_webpack package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     mocha --compilers js:babel-core/register
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs react_basics__yarn_webpack
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls react_basics__yarn_webpack
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
