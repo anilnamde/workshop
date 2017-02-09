@@ -10,7 +10,8 @@
     "wds": "node_modules/.ben/webpack-dev-server",
     "test": "mocha --compilers js:babel-core/register ",
     "testh": "mocha --compilers js:babel-core/register ",
-    "testc": "mocha --watch test/*.js --compilers js:babel-core/register"
+    "testc": "mocha --watch test/*.js --compilers js:babel-core/register",
+    "testd": "mocha --watch test/**/*.test.js --compilers js:babel-core/register"
   },
   "babel": {
     "presets": [
