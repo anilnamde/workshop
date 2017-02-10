@@ -8,9 +8,11 @@
   "scripts": {
     "webpack": "node_modules/.ben/webpack",
     "wds": "node_modules/.ben/webpack-dev-server",
+
     "test": "mocha --compilers js:babel-core/register ",
     "testc": "mocha --watch test/*.js --compilers js:babel-core/register",
     "testd": "mocha --watch test/**/*.test.js --compilers js:babel-core/register",
+
     "clean": "rm -rf dist",
     "brunch": "./node_modules/brunch/bin/brunch b",
     "brunchw": "./node_modules/brunch/bin/brunch watch --server"
