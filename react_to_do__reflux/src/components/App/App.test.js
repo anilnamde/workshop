@@ -1,13 +1,13 @@
-import jsdom from 'mocha-jsdom';
-
-import ReactDOM from 'react-dom';
+import React from 'react';
+import { expect } from 'chai';
+import { mount, shallow } from 'enzyme';
 import App from './App';
 
-describe("something ", ()=> {
+describe('<Foo />', () => {
 
-    it('renders without crashing', () => {
-        const div = document.createElement('div');
-        ReactDOM.render(<App />, div);
-    });
+  it('calls componentDidMount', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.html()).to.not.equal('');
+  });
 
 });
