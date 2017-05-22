@@ -1,0 +1,92 @@
+ul{
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+li{
+  display: block;
+  padding:5px 10px;
+  margin-bottom:4px;
+  cursor: pointer;
+  overflow: hidden;
+}
+li:hover{
+  background: lightblue;
+}
+
+label{
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+}
+
+input{
+  float: right;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@charset "UTF-8";
+.multiple-values-list-component ul {
+  padding: 0px 20px;
+}
+.multiple-values-list-component li .label {
+  width: 175px;
+  float: left;
+}
+.multiple-values-list-component li label {
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  line-height: 35px;
+  font-weight: normal;
+  margin: 0;
+}
+.multiple-values-list-component li label .indicator {
+  float: right;
+  width: 15px;
+  height: 15px;
+  margin: 9px 0 9px 9px;
+  background-color: #dbe9f5;
+}
+.multiple-values-list-component li input[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+}
+.multiple-values-list-component li input[type=checkbox]:checked ~ .indicator:before {
+  font-family: "iconfont";
+  content: "";
+  position: relative;
+  top: -10px;
+  right: 1px;
+  color: #337ab7;
+  font-size: 18px;
+  border-radius: 2px;
+}
+.multiple-values-list-component li.partial-selected .indicator:before {
+  content: "";
+  position: relative;
+  top: -9px;
+  right: -2px;
+  font-size: 11px;
+  color: #337ab7;
+  border-radius: 2px;
+}
+
+.multiple-values-list-component{
+  height:100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
