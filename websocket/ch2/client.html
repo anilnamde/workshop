@@ -11,10 +11,15 @@
 
             // Listen for messages
             socket.addEventListener('message', function (event) {
+                document.querySelector('#number').innerHTML = event.data;
                 console.log('Message from server', event.data);
             });
         </script>
     </head>
     <body>
+        <div>
+            <span>Message</span>
+            <span id="number"></span>
+        </div>
     </body>
 </html>
