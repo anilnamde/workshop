@@ -70,9 +70,15 @@
 "use strict";
 
 
-var sum = __webpack_require__(1);
+var _sum = __webpack_require__(1);
 
-console.log(sum(3, 3));
+var _sum2 = _interopRequireDefault(_sum);
+
+__webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+console.log((0, _sum2.default)(3, 3));
 
 /***/ }),
 /* 1 */
@@ -81,11 +87,26 @@ console.log(sum(3, 3));
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 var sum = function sum(a, b) {
   return a + b;
 };
 
-module.exports = sum;
+exports.default = sum;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var image = document.createElement('img');
+image.src = 'http://lorempixel.com/400/200/';
+
+document.body.appendChild(image);
 
 /***/ })
 /******/ ]);
